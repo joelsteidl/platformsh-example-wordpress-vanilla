@@ -7,9 +7,14 @@ name: app
 # The runtime the application uses.
 type: "php:7.0"
 
+dependencies:
+    php:
+        wp-cli/wp-cli: "^1.1"
+        psy/psysh: "^0.8.4"
+
 # Configuration of the build of the application.
 build:
-    flavor: composer
+    flavor: none
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
@@ -17,6 +22,13 @@ build:
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
     database: "mysqldb:mysql"
+
+# The size of the persistent disk of the application (in MB).
+disk: 2048
+
+# The mounts that will be performed when the package is deployed.
+mounts:
+    "/web/wp-content/uploads": "shared:files/uploads"
 
 # The configuration of app when it is exposed to the web.
 web:
@@ -34,17 +46,3 @@ web:
             scripts: true
             allow: true
 
-# The size of the persistent disk of the application (in MB).
-disk: 2048
-
-# The mounts that will be performed when the package is deployed.
-mounts:
-    "/web/wp-content/uploads": "shared:files/uploads"
-
-# The hooks that will be performed when the package is deployed.
-#hooks:
-#    build: |
-#      mkdir -p wp/wp-content/themes
-#      mkdir -p wp/wp-content/plugins
-#      cp -r plugins/* wp/wp-content/plugins/
-#      cp -r themes/* wp/wp-content/themes/
