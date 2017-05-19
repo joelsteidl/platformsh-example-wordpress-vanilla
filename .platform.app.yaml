@@ -29,6 +29,7 @@ disk: 2048
 # The mounts that will be performed when the package is deployed.
 mounts:
     "/web/wp-content/uploads": "shared:files/uploads"
+    "/web/wp-content/cache": "shared:files/cache"
 
 # The configuration of app when it is exposed to the web.
 web:
@@ -45,4 +46,3 @@ web:
             expires: 600
             scripts: true
             allow: true
-
