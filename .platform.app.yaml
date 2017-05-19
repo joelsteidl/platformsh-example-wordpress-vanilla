@@ -23,7 +23,7 @@ web:
     locations:
         "/":
             # The public directory of the app, relative to its root.
-            root: "wp"
+            root: "web"
             # The front-controller script to send non-static requests to.
             passthru: "/index.php"
             # Wordpress has multiple roots (wp-admin) so the following is required
@@ -39,12 +39,12 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-    "/wp/wp-content/uploads": "shared:files/uploads"
+    "/web/wp-content/uploads": "shared:files/uploads"
 
 # The hooks that will be performed when the package is deployed.
-hooks:
-    build: |
-      mkdir -p wp/wp-content/themes
-      mkdir -p wp/wp-content/plugins
-      cp -r plugins/* wp/wp-content/plugins/
-      cp -r themes/* wp/wp-content/themes/
+#hooks:
+#    build: |
+#      mkdir -p wp/wp-content/themes
+#      mkdir -p wp/wp-content/plugins
+#      cp -r plugins/* wp/wp-content/plugins/
+#      cp -r themes/* wp/wp-content/themes/
