@@ -9,7 +9,7 @@ if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
   // The DB credentials are stored in the first item in the relationship
   // to use. By default it's called "database", but could be named differentl
   // if desired in .platform.app.yaml.
-  if (!defined(DB_NAME)) {
+  if (!defined('DB_NAME')) {
     define('DB_NAME', $relationships['database'][0]['path']);
     define('DB_USER', $relationships['database'][0]['username']);
     define('DB_PASSWORD', $relationships['database'][0]['password']);
