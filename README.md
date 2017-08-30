@@ -16,7 +16,12 @@ That's it!  You now have a working "hello world" level project you can build on.
 
 ## Using as a reference
 
-You can also use this repository as a reference for your own projects, and borrow whatever code is needed. The most important parts are the `.platform.app.yaml` file and the `.platform` directory.  You will also need the `wp-config.php` and `wp-config-platformsh.php` files that allow WordPress to automatically pick up database credentials from Platform.sh.
+You can also use this repository as a reference for your own projects, and borrow whatever code is needed. The most important parts are the [`.platform.app.yaml`](/.platform.app.yaml) file and the [`.platform`](/.platform) directory.  You will also need the `wp-config.php` and `wp-config-platformsh.php` files that allow WordPress to automatically pick up database credentials from Platform.sh.
+
+Also see:
+
+* [`wp-config.php`](/web/wp-config.php) - The customized `wp-config.php` file works for both Platform.sh and local development, setting only those values that are needed in both.  You can add additional values as desired.  It will then load a `wp-config-local.php` file (which is excluded from Git) to load local development configuration or the `wp-config-platformsh.php` file, which contains Platform.sh-centric configuration.
+* [`wp-config-platformsh.php`](/web/wp-config-platformsh.php) - This file contains Platform.sh-specific code to map environment variables into WordPress configuration constants.  You can add to it as needed.
 
 ## Local settings
 
