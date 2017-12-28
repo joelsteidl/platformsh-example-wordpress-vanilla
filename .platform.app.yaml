@@ -40,9 +40,15 @@ web:
             # The front-controller script to send non-static requests to.
             passthru: "/index.php"
             # Wordpress has multiple roots (wp-admin) so the following is required
-            index: 
+            index:
                 - "index.php"
             # The number of seconds whitelisted (static) content should be cached.
             expires: 600
             scripts: true
             allow: true
+
+hooks:
+    build: |
+        set -e
+        cp .platform/wp-config/wp-config-platformsh.php web
+        cp .platform/wp-config/wp-config.php web
