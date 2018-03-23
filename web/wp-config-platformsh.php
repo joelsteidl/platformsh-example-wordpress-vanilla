@@ -19,8 +19,11 @@ if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
   }
 }
 
-$site_host = $_SERVER['HTTP_HOST'];
-$site_scheme = !empty($_SERVER['https']) ? 'https' : 'http';
+// we might be running wp-cli
+if (isset($_SERVER['HTTP_HOST'])) {
+  $site_host = $_SERVER['HTTP_HOST'];
+  $site_scheme = !empty($_SERVER['https']) ? 'https' : 'http';
+}
 
 // Check whether a route is defined for this application in the Platform.sh routes.
 // Use it as the site hostname if so (it is not ideal to trust HTTP_HOST).
